@@ -8,6 +8,8 @@ import com.example.recyclerviewexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
+    //private lateinit var adapter: TodoAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,9 +30,16 @@ class MainActivity : AppCompatActivity() {
             Todo("Learn API", false)
         )
 
-        val adapter = TodoAdapter(todoList)
-        activityMainBinding.recyclerView.adapter = adapter
-        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+        //Todo OPTION-1 with diffutil
+        //adapter = TodoAdapter()
+        //activityMainBinding.recyclerView.adapter = adapter
+        //activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+        //adapter.submitList(todoList)
+
+        //Todo OPTION-2 with diffutil
+        adapter
+
+
         activityMainBinding.btnSubmit.setOnClickListener {
             val title = activityMainBinding.etTask.text.toString()
             Toast.makeText(this, title, Toast.LENGTH_LONG).show()
